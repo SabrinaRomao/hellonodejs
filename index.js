@@ -1,8 +1,14 @@
 var http = require('http');
+//modulo do file system
+var fs = require('fs');
 http.createServer(function (req, res) {
   res.writeHead(200, {
-    'Content-Type': 'text/plain'
+    'Content-Type': 'text/html'
   });
-  res.end('Hello Node.JS!');
+  //Lendo arquivo html
+  fs.readFile('./views/index.html', (err, content) => {
+    //retornando HTML
+    res.end(content);
+  });
 }).listen(8080);
 console.log('Server running at http://localhost:8080/');
